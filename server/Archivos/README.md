@@ -1,0 +1,1 @@
+Carpeta donde se almacenan los archivos pasados por los usuarios.

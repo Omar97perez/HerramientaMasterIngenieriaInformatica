@@ -1,0 +1,21 @@
+{
+  "name": "graphloud",
+  "version": "1.0.0",
+  "description": "APágina web para ayuda al estudiante",
+  "main": "index.js",
+  "scripts": {
+    "purifycss": "purifycss Client/public/css/style.css app/src/app/components/*.vue --min --out app/src/public/css/final.css --info",
+    "client": "cd client && npm run start",
+    "server": "cd server && npm start",
+    "webpack": "cd client && npm run webpack",
+    "dependencies:client": "cd client && npm i",
+    "dependencies:server": "cd server && npm i"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "all": "0.0.0"
+  },
+  "devDependencies": {}
+}

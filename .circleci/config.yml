@@ -1,0 +1,53 @@
+version: 2.1
+orbs:
+    gcp-gke: circleci/gcp-gke@1.0.4
+
+jobs:
+    build-and-push-client:
+        machine: true
+        steps:
+            - checkout
+            - run: |
+                echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+            
+            - run: cd client && docker build --no-cache -t pierresimt/frontend-cn:latest .
+            - run: docker push pierresimt/frontend-cn:latest
+    
+    build-and-push-server:
+        machine: true
+        steps:
+            - checkout
+            - run: |
+                echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+            
+            - run: cd server && docker build --no-cache -t pierresimt/backend-cn-gke:latest .
+            - run: docker push pierresimt/backend-cn-gke:latest
+    
+    deploy:
+        description: Deploy application to Google Kubernetes Engine
+        machine: true
+        steps:
+            - gcp-gke/install
+            - gcp-gke/update-kubeconfig-with-credentials:
+                cluster: devops-p4
+                perform-login: true
+            - gcp-gke/rollout-image:
+                cluster:  devops-p4
+                deployment: frontend
+                container: frontend
+                image: pierresimt/frontend-cn
+            - gcp-gke/rollout-image:
+                cluster:  devops-p4
+                deployment: backend
+                container: backend
+                image: pierresimt/backend-cn-gke
+
+workflows:
+    build:
+        jobs:
+            - build-and-push-client
+            - build-and-push-server
+            - deploy:
+                requires:
+                    - build-and-push-client
+                    - build-and-push-server

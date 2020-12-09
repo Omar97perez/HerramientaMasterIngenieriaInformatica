@@ -1,0 +1,104 @@
+{
+    "apiVersion": "sparkoperator.k8s.io/v1beta2",
+    "kind": "SparkApplication",
+    "metadata": {
+      "name": "test-app",
+      "namespace": "default"
+    },
+    "spec": {
+      "type": "Python",
+      "pythonVersion": "3",
+      "mode": "cluster",
+      "image": "pierresimt/spark-kube",
+      "imagePullPolicy": "IfNotPresent",
+      "mainApplicationFile": "local:///mnt/work/classification/naive_bayes.py",
+      "sparkVersion": "2.4.5",
+      "volumes": [
+        {
+          "name": "nfs-spark-driver",
+          "nfs": {
+            "server": "10.0.0.250",
+            "path": "/NFS/data"
+          }
+        },
+        {
+          "name": "nfs-spark-executor",
+          "nfs": {
+            "server": "10.0.0.250",
+            "path": "/NFS/spark-data"
+          }
+        }
+      ],
+      "restartPolicy": {
+        "type": "OnFailure",
+        "onFailureRetries": 3,
+        "onFailureRetryInterval": 10,
+        "onSubmissionFailureRetries": 5,
+        "onSubmissionFailureRetryInterval": 20
+      },
+      "driver": {
+        "labels": {
+          "version": "2.4.5"
+        },
+        "serviceAccount": "spark",
+        "volumeMounts": [
+          {
+            "name": "nfs-spark-driver",
+            "mountPath": "/mnt/work"
+          }
+        ],
+        "env": [
+          {
+            "name": "FILE_NAME_IN",
+            "value": "TomeCano.csv"
+          },
+          {
+            "name": "COLUMN_INICIAL",
+            "value": "1"
+          },
+          {
+            "name": "COLUMN_FINAL",
+            "value": "12"
+          },
+          {
+            "name": "FILE_NAME_EXIT",
+            "value": "test.png"
+          }
+        ]
+      },
+      "executor": {
+        "instances": 1,
+        "labels": {
+          "version": "2.4.5"
+        },
+        "volumeMounts": [
+          {
+            "name": "nfs-spark-driver",
+            "mountPath": "/mnt/work"
+          },
+          {
+            "name": "nfs-spark-executor",
+            "mountPath": "/mnt/data"
+          }
+        ],
+        "env": [
+          {
+            "name": "FILE_NAME_IN",
+            "value": "TomeCano.csv"
+          },
+          {
+            "name": "COLUMN_INICIAL",
+            "value": "1"
+          },
+          {
+            "name": "COLUMN_FINAL",
+            "value": "12"
+          },
+          {
+            "name": "FILE_NAME_EXIT",
+            "value": "test.png"
+          }
+        ]
+      }
+    }
+  }

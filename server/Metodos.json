@@ -1,0 +1,167 @@
+{
+    "Methods": [
+        {
+            "Name": "ScikitLearn",
+            "file": "TomeCano.csv",
+            "Description": "Método que permite aplicar funciones de Machine Learning determinadas.",
+            "Elements": [
+                {
+                    "Name": "tipoGrafica",
+                    "value": "2",
+                    "DescriptionShort": "Campo que nos permite elegir la gráfica deseada.",
+                    "DescriptionLong": "Valores entre 1-3 ()."
+                },
+                {
+                    "Name": "columnaSeleccionadaInicial",
+                    "NameInput": "Columna Inicial",
+                    "value": "1",
+                    "DescriptionShort": "Campo que nos permite elegir la columna inicial deseada.",
+                    "DescriptionLong": "Valor númerico empezando por 0 de la columna desea para nuestra representación gráfica."
+                },
+                {
+                    "Name": "columnaSeleccionada",
+                    "NameInput": "Columna Final",
+                    "value": "12",
+                    "DescriptionShort": "Campo que nos permite elegir la columna final deseada.",
+                    "DescriptionLong": "Valor númerico empezando por 0 de la columna desea para nuestra representación gráfica."
+                }
+            ]
+        },
+        {
+            "Name":"Joblib",
+            "file":"TomeCano.csv",
+            "Description":"Método que permite aplicar funciones de Machine Learning determinadas.",
+            "Elements":[
+               {
+                  "Name":"tipoGrafica",
+                  "value":"2",
+                  "DescriptionShort":"Campo que nos permite elegir la gráfica deseada.",
+                  "DescriptionLong":"Valores entre 1-3 ()."
+               },
+               {
+                  "Name":"columnaSeleccionadaInicial",
+                  "NameInput":"Columna Inicial",
+                  "value":"1",
+                  "DescriptionShort":"Campo que nos permite elegir la columna inicial deseada.",
+                  "DescriptionLong":"Valor númerico empezando por 0 de la columna desea para nuestra representación gráfica."
+               },
+               {
+                  "Name":"columnaSeleccionada",
+                  "NameInput":"Columna Final",
+                  "value":"12",
+                  "DescriptionShort":"Campo que nos permite elegir la columna final deseada.",
+                  "DescriptionLong":"Valor númerico empezando por 0 de la columna desea para nuestra representación gráfica."
+               }
+            ]
+        },
+        {
+            "Name": "Spark",
+            "file": "TomeCano.csv",
+            "Description": "Método que permite aplicar funciones de ML usando Spark.",
+            "Elements": [
+                {
+                    "Name": "tipoGrafica",
+                    "value": "2",
+                    "DescriptionShort": "Campo que nos permite elegir la gráfica deseada.",
+                    "DescriptionLong": "Valores pueden ser { decision_tree_classification.json  decision_tree_regression.json  k_means.json  linear_regression.json  naive_bayes.json  random_forest.json  sparkpi.json } "
+                },
+                {
+                    "Name": "columnaSeleccionadaInicial",
+                    "NameInput": "Columna Inicial",
+                    "value": "1",
+                    "DescriptionShort": "Campo que nos permite elegir la columna inicial deseada.",
+                    "DescriptionLong": "Valor númerico empezando por 0 de la columna desea para nuestra representación gráfica."
+                },
+                {
+                    "Name": "columnaSeleccionada",
+                    "NameInput": "Columna Final",
+                    "value": "12",
+                    "DescriptionShort": "Campo que nos permite elegir la columna final deseada.",
+                    "DescriptionLong": "Valor númerico empezando por 0 de la columna desea para nuestra representación gráfica."
+                }
+            ]
+        },
+        {
+            "Name": "ADM",
+            "file": "TomeCano.csv",
+            "Description": "Método que permite aplicar funciones de ML usando Spark.",
+            "Elements": [
+                {
+                    "Name": "tipoGrafica",
+                    "value": "1",
+                    "DescriptionShort": "Campo que nos permite elegir la gráfica deseada.",
+                    "DescriptionLong": "Valores pueden ser { decision_tree_classification.json  decision_tree_regression.json  k_means.json  linear_regression.json  naive_bayes.json  random_forest.json  sparkpi.json } "
+                },
+                {
+                    "Name": "columnaSeleccionadaInicial",
+                    "NameInput": "Columna Inicial",
+                    "value": "0",
+                    "DescriptionShort": "Campo que nos permite elegir la columna inicial deseada.",
+                    "DescriptionLong": "Valor númerico empezando por 0 de la columna desea para nuestra representación gráfica."
+                },
+                {
+                    "Name": "columnaSeleccionadaFinal",
+                    "NameInput": "Columna Final",
+                    "value": "12",
+                    "DescriptionShort": "Campo que nos permite elegir la columna final deseada.",
+                    "DescriptionLong": "Valor númerico empezando por 0 de la columna desea para nuestra representación gráfica."
+                },
+                {
+                    "Name": "columnaSeleccionada",
+                    "NameInput": "Columna Seleccionada para predecir",
+                    "value": "12",
+                    "DescriptionShort": "Campo que nos permite saber que valor se desea predecir.",
+                    "DescriptionLong": "Valor númerico empezando por 0 de la columna desea predecir."
+                },
+                {
+                    "Name": "datos",
+                    "NameInput": "Datos de predicción",
+                    "value": "1,1,2010,1.00,12.00,5.00,31.00,56.00,0.4,2.00,3.00,2.00",
+                    "DescriptionShort": "Campo que nos permite conocer algunos valor para preveer el resultado.",
+                    "DescriptionLong": "Valor separado por comes de las comlumnas desde la columna inicila a la final. De igual forma, cabe resaltar que no hay que introducir el dato a estimar."
+                }
+            ]
+        },
+        {
+            "Name": "ADM2",
+            "file": "Football.csv",
+            "Description": "Método que permite aplicar funciones de ML usando Spark.",
+            "Elements": [
+                {
+                    "Name": "tipoGrafica",
+                    "value": "1",
+                    "DescriptionShort": "Campo que nos permite elegir la gráfica deseada.",
+                    "DescriptionLong": "Valores pueden ser { decision_tree_classification.json  decision_tree_regression.json  k_means.json  linear_regression.json  naive_bayes.json  random_forest.json  sparkpi.json } "
+                },
+                {
+                    "Name": "columnaSeleccionadaInicial",
+                    "NameInput": "Columna Inicial",
+                    "value": "2",
+                    "DescriptionShort": "Campo que nos permite elegir la columna inicial deseada.",
+                    "DescriptionLong": "Valor númerico empezando por 0 de la columna desea para nuestra representación gráfica."
+                },
+                {
+                    "Name": "columnaSeleccionadaFinal",
+                    "NameInput": "Columna Final",
+                    "value": "12",
+                    "DescriptionShort": "Campo que nos permite elegir la columna final deseada.",
+                    "DescriptionLong": "Valor númerico empezando por 0 de la columna desea para nuestra representación gráfica."
+                },
+                {
+                    "Name": "columnaSeleccionada",
+                    "NameInput": "Columna Seleccionada para predecir",
+                    "value": "32",
+                    "DescriptionShort": "Campo que nos permite saber que valor se desea predecir.",
+                    "DescriptionLong": "Valor númerico empezando por 0 de la columna desea predecir."
+                },
+                {
+                    "Name": "datos",
+                    "NameInput": "Datos de predicción",
+                    "value": "1,0,1,0,0,0,0,2,0,0",
+                    "DescriptionShort": "Campo que nos permite conocer algunos valor para preveer el resultado.",
+                    "DescriptionLong": "Valor separado por comes de las comlumnas desde la columna inicila a la final. De igual forma, cabe resaltar que no hay que introducir el dato a estimar."
+                }
+            ]
+        }
+    ]
+}

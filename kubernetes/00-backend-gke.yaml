@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment # Modificar a StatefulSet (aplicacion con persistencia debido a los resultados que devuelve)
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: pierresimt/backend-cn-gke
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        readinessProbe:
+          httpGet:
+            path: /api/Get/Methods
+            port: 3000
+        livenessProbe:
+          httpGet:
+            path: /api/Get/Methods
+            port: 3000
+          initialDelaySeconds: 3
+          periodSeconds: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: backend
+spec:
+    type: NodePort
+    ports:
+    - port: 3000
+      targetPort: 3000
+    selector:
+      app: backend
+ 
