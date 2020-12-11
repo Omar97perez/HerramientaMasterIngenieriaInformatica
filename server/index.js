@@ -68,10 +68,13 @@ app.post('/api/Execute/Algorithm/:name/:Elements', upload.single('file'), (req, 
       }
     }
 
+    
     console.log("make -C ./Algoritmos/" + req.params.name + " file=../../Archivos/" + req.file.filename + " fileExit=../../Archivos/" + fileExit[0] + ".png " + stringFinal + " run")
+    var start = Date.now();
     const exec = require('child_process').exec;
     exec("make -C ./Algoritmos/" + req.params.name + " file=../../Archivos/" + req.file.filename + " fileExit=../../Archivos/" + fileExit[0] + ".png " + stringFinal + " run", (err, stdout, stderr) => {
-      res.send(req.file.filename);
+      var final = (Date.now() - start) / 1000;
+      res.send([req.file.filename, String(final).replace(".",",")]);
     });
 
   });

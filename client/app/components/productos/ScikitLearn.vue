@@ -61,7 +61,8 @@
                       </button>
                   </div>
                   <div class="modal-body" align="center">
-                      <img class="img-fluid mt-3" id="myimage"/>
+                    <h4 id="TimeEjecution"></h4>
+                    <img class="img-fluid mt-3" id="myimage"/>
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-primary" id="prueba" rel="myimage" @click="DescargarImagen()">Descargar</button>
@@ -353,8 +354,9 @@ export default {
               $("#ModalCargaImagen").modal('hide');
               $('body').removeClass('modal-open');
               $('.modal-backdrop').remove();
-              response = response.split(".");
-              document.getElementById('myimage').src = 'http://localhost:3000/api/Get/file/' + response[0] + ".png";
+              var responseImage = response[0].split(".");
+              document.getElementById('myimage').src = 'http://localhost:3000/api/Get/file/' + responseImage[0] + ".png";
+              document.getElementById('TimeEjecution').innerHTML =  "Tiempo de ejecución: " + response[1] + " segundos";
               $('body').removeClass('ModalCargaImagen');
               $("#ModalVerImagen").modal();
           },
