@@ -261,10 +261,10 @@ export default {
       var urlPostMetodo = "";
 
       if(elements == ""){
-          urlPostMetodo = 'http://localhost:3000/api/Execute/Method/' + this.titleMethod + '/' + "no";
+          urlPostMetodo = 'http://localhost:3000/api/Execute/Method/AlgorithmImages/' + this.titleMethod + '/' + "no";
       }
       else{
-          urlPostMetodo = 'http://localhost:3000/api/Execute/Method/' + this.titleMethod + '/' + elements;
+          urlPostMetodo = 'http://localhost:3000/api/Execute/Method/AlgorithmImages/' + this.titleMethod + '/' + elements;
       }
       var formData = new FormData();
       formData.append("file", document.getElementById("fileExecuteMethod").files[0]);
