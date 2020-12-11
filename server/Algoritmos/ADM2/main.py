@@ -101,7 +101,7 @@ fig = plt.figure()
 fig.suptitle(msg)
 ax = fig.add_subplot(111)
 plt.boxplot(cv_results)
-ax.set_xticklabels('BR')
+# ax.set_xticklabels('BR')
 
 if(pedirParametros == 1):
     plt.show()
