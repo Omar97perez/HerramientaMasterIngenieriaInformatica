@@ -10,16 +10,6 @@ let fs = require('fs');
 var request = require('request');
 const axios = require('axios')
 
-// const { KubeConfig } = require('kubernetes-client');
-// const Client = require('kubernetes-client').Client;
-
-// const kubeconfig = new KubeConfig();
-// kubeconfig.loadFromFile('./kubeconfig');
-
-// const crd = require('./Algoritmos/Spark/crd.json');
-
-// const Request = require('kubernetes-client/backends/request');
-
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -187,8 +177,58 @@ app.get('/api/Get/file/:name', (req, res) => {
   res.sendFile('./Archivos/' + req.params.name, { root: __dirname });
 });
 
-
 // Permite devolver El archivo con todos los Métodos
 app.get('/api/Get/Methods', function (req, res) {
   res.sendFile('./Metodos.json', { root: __dirname });
 });
+
+
+function executeUnzip(filename, site){
+	require('child_process').execSync('sudo unzip ' + filename + " -d " + site);
+}
+
+function executeMake(nameMethod){
+	require('child_process').execSync("sudo make -C ./app/src/Servidor/Metodos/" + nameMethod) + " all";
+}
+
+//Middlewares
+  //Sirve para imprimir las peticiones Get de la consola
+  app.use(morgan('dev'));
+  //Body-parser viene integrado con express (sirve para trabajar con los json)
+  app.use(express.json());
+
+  //Ficheros estáticos, coge el index.html dentro de public
+  app.use(express.static(__dirname + '/public'));
+
+  // Permite devolver El archivo con todos los Métodos
+  app.get('/api/Get/AlgoritmosImagenes/Methods', function(req, res) {
+    res.sendFile('./MetodosImagenes.json', { root: __dirname });
+  });
+  
+  // Permite Ejecutar Métodos 
+  app.post('/api/Execute/Method/:name/:Elements', upload.single('file'), (req, res) => {
+    
+    var elementsUrl = req.params.Elements.split("-");
+    var fileExit = req.file.filename.split(".");
+
+    fs.readFile("./app/src/Servidor/Metodos.json", 'utf-8', (err2, data) => {
+      var methods = JSON.parse(data);
+      var element = methods['Methods'].findIndex(method => method.Name === req.params.name);
+      var method = methods['Methods'][element];
+      executeMake(method["Name"]);	
+      var elements = method["Elements"];
+      var stringFinal = "";
+
+      if (elementsUrl.length != 1){
+        for(x =0; x < elementsUrl.length; x++){
+          stringFinal += " " + elements[x]["Name"] + "=" + elementsUrl[x];
+        }	
+      }
+
+      console.log("make -C ./app/src/Servidor/Metodos/" + req.params.name + " file=../../Archivos/"+ req.file.filename + " fileExit=../../Archivos/" + fileExit[0] + ".png " + stringFinal + " run");
+      const exec = require('child_process').exec;
+      exec("make -C ./app/src/Servidor/Metodos/" + req.params.name + " file=../../Archivos/"+ req.file.filename + " fileExit=../../Archivos/" + fileExit[0] + ".png " + stringFinal + " run", (err, stdout, stderr) => {
+        res.send(req.file.filename);
+      });
+    });	
+  });

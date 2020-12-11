@@ -1,0 +1,39 @@
+{
+    "Methods":[
+       {
+          "Name":"Secuencial",
+          "file":"image.png",
+          "Description":"Método que permite aplicar un filtrado una Imagen a través de un algoritmo Secuencial. Este filtro permite poder enborronar una imagen dada previamente.",
+          "Elements":[
+             
+          ]
+       },
+       {
+          "Name":"MPI",
+          "file":"image.png",
+          "Description":"Método que permite aplicar un filtrado a una imagen a través de un Algoritmo usando la tecnología MPI. Este filtro permite poder enborronar una imagen dada previamente.",
+          "Elements":[
+             {
+                "Name":"height",
+                "value":"630",
+                "DescriptionShort":"Altura de la Imagen.",
+                "DescriptionLong":"Valor numérico que describe la altura de la imagen. Con estp, provocamos que nuestro algoritmos aumente su velocidad en gran medida."
+             },
+             {
+                "Name":"width",
+                "value":"1200",
+                "DescriptionShort":"Ancho de la Imagen.",
+                "DescriptionLong":"Valor numérico que describe la anchura de la imagen. Con estp, provocamos que nuestro algoritmos aumente su velocidad en gran medida."
+             }
+          ]
+       },
+       {
+          "Name":"OpenMP",
+          "file":"image.png",
+          "Description":"Método que permite aplicar un filtrado una Imagen a través de un algoritmo usando la tecnología OpenMp. Este filtro permite poder enborronar una imagen dada previamente.",
+          "Elements":[
+             
+          ]
+       }
+    ]
+}
