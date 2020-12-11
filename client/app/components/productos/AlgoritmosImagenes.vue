@@ -190,6 +190,7 @@ export default {
         .then(res => res.json())
         .then(data => {
           this.Paginacion = data["Methods"];
+          console.log(this.Paginacion)
           this.Productos = this.Paginacion.slice(0,this.tampagina);
         });
     },
