@@ -24,9 +24,19 @@ import ScikitLearn from './components/productos/ScikitLearn.vue';
 import OpenMP from './components/productos/OpenMP.vue';
 import Spark from './components/productos/Spark.vue';
 import InvestigacionFutbol from './components/productos/InvestigacionFutbol.vue';
+import AlgoritmosImagenes from './components/productos/AlgoritmosImagenes.vue';
+
 
 
 const routes = [
+  {
+    name: 'AlgoritmosImagenes',
+    path: '/Algoritmos/Imagenes',
+    component: AlgoritmosImagenes,
+    meta: {
+      isPublic: true
+    }
+  },
   {
     name: 'index',
     path: '/',
