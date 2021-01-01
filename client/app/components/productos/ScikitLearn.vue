@@ -83,7 +83,7 @@
         </div>
 
         <div class="mt-5" align="center">
-          <h2><strong>Clasificación oooo</strong></h2>
+          <h2><strong>Clasificación</strong></h2>
         </div>
 
         <div class="row">

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: tfm-frontend
-        image: omar97perez/tfm
+        image: omar97perez/tfm:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 4100
