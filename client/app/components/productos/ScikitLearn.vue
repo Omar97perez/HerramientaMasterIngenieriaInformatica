@@ -83,7 +83,7 @@
         </div>
 
         <div class="mt-5" align="center">
-          <h2><strong>Clasificación</strong></h2>
+          <h2><strong>Clasificación PPPP</strong></h2>
         </div>
 
         <div class="row">
@@ -300,7 +300,7 @@ export default {
   },
   methods: {
     getProductos() {
-      fetch('http://localhost:3000/api/Get/Methods')
+      fetch('http://192.168.99.100:32485/api/Get/Methods')
         .then(res => res.json())
         .then(data => {
           this.Paginacion = data["Methods"];

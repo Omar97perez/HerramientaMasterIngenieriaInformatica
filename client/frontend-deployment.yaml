@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfm-frontend
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: tfm-frontend
+  template:
+    metadata:
+      labels:
+        app: tfm-frontend
+    spec:
+      containers:
+      - name: tfm-frontend
+        image: omar97perez/tfm
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 4100
