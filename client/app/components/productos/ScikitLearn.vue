@@ -83,7 +83,7 @@
         </div>
 
         <div class="mt-5" align="center">
-          <h2><strong>Clasificación PPPP</strong></h2>
+          <h2><strong>Clasificación oooo</strong></h2>
         </div>
 
         <div class="row">
@@ -300,7 +300,7 @@ export default {
   },
   methods: {
     getProductos() {
-      fetch('http://192.168.99.100:32485/api/Get/Methods')
+      fetch('/api/Get/Methods')
         .then(res => res.json())
         .then(data => {
           this.Paginacion = data["Methods"];
@@ -336,10 +336,10 @@ export default {
       var urlPostMetodo = "";
 
       if(elements == ""){
-          urlPostMetodo = 'http://localhost:3000/api/Execute/Algorithm/' + this.titleMethod + '/' + "no";
+          urlPostMetodo = '/api/Execute/Algorithm/' + this.titleMethod + '/' + "no";
       }
       else{
-          urlPostMetodo = 'http://localhost:3000/api/Execute/Algorithm/' + this.titleMethod + '/' + elements;
+          urlPostMetodo = '/api/Execute/Algorithm/' + this.titleMethod + '/' + elements;
       }
       var formData = new FormData();
       formData.append("file", document.getElementById("fileExecuteMethod").files[0]);
@@ -355,7 +355,7 @@ export default {
               $('body').removeClass('modal-open');
               $('.modal-backdrop').remove();
               var responseImage = response[0].split(".");
-              document.getElementById('myimage').src = 'http://localhost:3000/api/Get/file/' + responseImage[0] + ".png";
+              document.getElementById('myimage').src = '/api/Get/file/' + responseImage[0] + ".png";
               document.getElementById('TimeEjecution').innerHTML =  "Tiempo de ejecución: " + response[1] + " segundos";
               $('body').removeClass('ModalCargaImagen');
               $("#ModalVerImagen").modal();
@@ -377,7 +377,7 @@ export default {
       var link = document.createElement("a");
       var position = this.Paginacion.findIndex(method => method.Name === this.titleMethod);
       link.download = this.Paginacion[position].file;
-      link.href = "http://localhost:3000/api/Get/file/" + this.Paginacion[position].file;
+      link.href = "/api/Get/file/" + this.Paginacion[position].file;
       link.click();
     }
   },

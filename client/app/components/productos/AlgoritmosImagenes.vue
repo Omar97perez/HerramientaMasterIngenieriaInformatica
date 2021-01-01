@@ -186,7 +186,7 @@ export default {
   },
   methods: {
     getProductos() {
-      fetch('http://localhost:3000/api/Get/AlgoritmosImagenes/Methods')
+      fetch('/api/Get/AlgoritmosImagenes/Methods')
         .then(res => res.json())
         .then(data => {
           this.Paginacion = data["Methods"];
@@ -263,10 +263,10 @@ export default {
       var urlPostMetodo = "";
 
       if(elements == ""){
-          urlPostMetodo = 'http://localhost:3000/api/Execute/Method/AlgorithmImages/' + this.titleMethod + '/' + "no";
+          urlPostMetodo = '/api/Execute/Method/AlgorithmImages/' + this.titleMethod + '/' + "no";
       }
       else{
-          urlPostMetodo = 'http://localhost:3000/api/Execute/Method/AlgorithmImages/' + this.titleMethod + '/' + elements;
+          urlPostMetodo = '/api/Execute/Method/AlgorithmImages/' + this.titleMethod + '/' + elements;
       }
       var formData = new FormData();
       formData.append("file", document.getElementById("fileExecuteMethod").files[0]);
@@ -306,7 +306,7 @@ export default {
       var link = document.createElement("a");
       var position = this.Paginacion.findIndex(method => method.Name === this.titleMethod);
       link.download = this.Paginacion[position].file;
-      link.href = "http://localhost:3000/api/Get/file/" + this.Paginacion[position].file;
+      link.href = "/api/Get/file/" + this.Paginacion[position].file;
       link.click();
     }
   },

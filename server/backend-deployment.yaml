@@ -1,9 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment # Modificar a StatefulSet (aplicacion con persistencia debido a los resultados que devuelve)
+kind: Deployment
 metadata:
   name: tfm-backend
 spec:
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: tfm-backend
@@ -12,27 +14,9 @@ spec:
       labels:
         app: tfm-backend
     spec:
-      volumes:
-        - name: nfs-spark-driver
-          nfs:
-            server: 10.0.0.250
-            path: /NFS/data
       containers:
       - name: tfm-backend
         image: omar97perez/tfm-backend
         imagePullPolicy: Always
-        volumeMounts:
-          - name: nfs-spark-driver
-            mountPath: "/usr/src/app/Archivos"
         ports:
         - containerPort: 3000
-        readinessProbe:
-          httpGet:
-            path: /api/Get/Methods
-            port: 3000
-        livenessProbe:
-          httpGet:
-            path: /api/Get/Methods
-            port: 3000
-          initialDelaySeconds: 3
-          periodSeconds: 3

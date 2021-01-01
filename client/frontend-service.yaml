@@ -9,4 +9,18 @@ spec:
       targetPort: 4100
     selector:
       app: tfm-frontend
- 
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-frontend
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: tfm-frontend
+          servicePort: 4100
