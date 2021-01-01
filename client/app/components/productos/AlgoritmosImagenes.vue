@@ -283,7 +283,7 @@ export default {
               $('body').removeClass('modal-open');
               $('.modal-backdrop').remove();
               var responseImage = response[0].split(".");
-              document.getElementById('myimage').src = 'http://localhost:3000/api/Get/file/' + responseImage[0] + ".png";
+              document.getElementById('myimage').src = '/api/Get/file/' + responseImage[0] + ".png";
               document.getElementById('TimeEjecution').innerHTML =  "Tiempo de ejecución: " + response[1] + " segundos";
               
               $('body').removeClass('ModalCargaImagen');
