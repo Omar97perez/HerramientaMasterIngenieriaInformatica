@@ -8,6 +8,7 @@ RUN apt update
 RUN apt -y install python3-pip
 RUN pip3 install -r requirements.txt
 RUN npm install
+RUN apt install mpich
 
 COPY ./ .
 
