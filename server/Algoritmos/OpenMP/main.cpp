@@ -100,8 +100,8 @@ Image applyFilter(Image &image, Matrix &filter, int numThreads)
     Image newImage(3, Matrix(newImageHeight, Array(newImageWidth)));
 
     int x = 0;
-const int a = 1;
-const int b = 3;
+    const int a = 1;
+    const int b = 3;
 
     for (int d = 0; d < 3; d++)
     {
@@ -126,44 +126,47 @@ const int b = 3;
 
 int main(int argc, char **argv)
 {
-    int rank, size, tag, rc;
-    char message[20];
+    // int rank, size, tag, rc;
+    // char message[20];
 
-    auto t1 = std::chrono::high_resolution_clock::now();
+    // auto t1 = std::chrono::high_resolution_clock::now();
 
-    // Calculamos los valores del filtro deseado
-    Matrix filter = getGaussian(10, 10, 50.0);
+    // // Calculamos los valores del filtro deseado
+    // Matrix filter = getGaussian(10, 10, 50.0);
 
-    // Cargamos la iamagen
-    Image image = loadImage(argv[1]);
+    // // Cargamos la iamagen
+    // Image image = loadImage(argv[1]);
 
-    // Calculamos los valores necesarios para poder aplicart el filtrado
-    int height = image[0].size();
-    int width = image[0][0].size();
-    int filterHeight = filter.size();
-    int filterWidth = filter[0].size();
-    //Mostramos los valores del filtrado
-    cout << endl;
-    cout << "--- Información de la Imagen---" << endl;
-    cout << "height: " << height << endl;
-    cout << "width: " << width << endl;
-    cout << "filterHeight: " << filterHeight << endl;
-    cout << "filterWidth: " << filterWidth << endl;
-    cout << endl;
+    // // Calculamos los valores necesarios para poder aplicart el filtrado
+    // int height = image[0].size();
+    // int width = image[0][0].size();
+    // int filterHeight = filter.size();
+    // int filterWidth = filter[0].size();
+    // //Mostramos los valores del filtrado
+    // cout << endl;
+    // cout << "--- Información de la Imagen---" << endl;
+    // cout << "height: " << height << endl;
+    // cout << "width: " << width << endl;
+    // cout << "filterHeight: " << filterHeight << endl;
+    // cout << "filterWidth: " << filterWidth << endl;
+    // cout << endl;
 
-    cout << "Cargando..." << endl;
+    // cout << "Cargando..." << endl;
 	
-    // Generamos el nombre del fichero 
-    stringstream ss;
-    ss << argv[3];
-    string str = ss.str();
-    string ficheroGuardar = str;
+    // // Generamos el nombre del fichero 
+    // stringstream ss;
+    // ss << argv[3];
+    // string str = ss.str();
+    // string ficheroGuardar = str;
 
-    Image newImage = applyFilter(image, filter, atoi(argv[2]));
-    saveImage(newImage, ficheroGuardar);
+    // Image newImage = applyFilter(image, filter, atoi(argv[2]));
+    // saveImage(newImage, ficheroGuardar);
 
-    auto t2 = std::chrono::high_resolution_clock::now();
+    // auto t2 = std::chrono::high_resolution_clock::now();
 
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
-    std::cout << "Tiempo de ejecucion: " << (float) (duration / 1000.0) << " sec" << std::endl;
+    // auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+    // std::cout << "Tiempo de ejecucion: " << (float) (duration / 1000.0) << " sec" << std::endl;
+
+
+    std::cout << "Hello World:" << std::endl;
 }
