@@ -9,6 +9,8 @@ RUN apt -y install python3-pip
 RUN pip3 install -r requirements.txt
 RUN npm install
 RUN apt -y install mpich
+RUN apt install libpng++-dev
+RUN apt install -y vim
 
 COPY ./ .
 

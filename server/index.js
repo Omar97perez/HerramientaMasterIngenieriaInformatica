@@ -74,7 +74,7 @@ app.post('/api/Execute/Algorithm/:name/:Elements', upload.single('file'), (req, 
     const exec = require('child_process').exec;
     exec("make -C ./Algoritmos/" + req.params.name + " file=../../Archivos/" + req.file.filename + " fileExit=../../Archivos/" + fileExit[0] + ".png " + stringFinal + " run", (err, stdout, stderr) => {
       var final = (Date.now() - start) / 1000;
-      res.send(["image.png", String(final).replace(".",",")]);
+      res.send([req.file.filename, String(final).replace(".",",")]);
     });
 
   });

@@ -57,11 +57,12 @@ def plot_dendrogram(model, **kwargs):
   dendrogram(linkage_matrix, **kwargs)
 
 class Algorithm:
-    def __init__(self, X,Y,pedirParametros, nombreFichero):
+    def __init__(self, X,Y,pedirParametros, nombreFichero, start_time_final):
       self.X = X
       self.Y = Y
       self.pedirParametros = pedirParametros
       self.nombreFichero = nombreFichero
+      self.start_time_final = start_time_final
 
 class BR(Algorithm):
   def grafica(self):
@@ -224,8 +225,8 @@ class RandomForestRegressorSA(Algorithm):
       model.fit(X_train, Y_train)
       predictions = model.predict(X_validation)
 
-    elapsed_time = time() - start_time
-    elapsed_time = format(elapsed_time, '.6f')
+    elapsed_time2 = time() - start_time
+    elapsed_time = format(elapsed_time2, '.6f')
     salida = 'Tiempo ejecución:' + str(elapsed_time) + ' segundos'
     cv_results = model_selection.cross_val_score(model, X_train, Y_train, cv=kfold)
     msg = 'Random Forest Regressor ' + '(' + str(format(cv_results.mean(),'.4f')) + ') \n' +  salida
@@ -241,13 +242,17 @@ class RandomForestRegressorSA(Algorithm):
     else:
       plt.show()
 
-    if(pedirParametros == 1):
+    if(self.pedirParametros == 1):
         fig = plt.figure()
         fig.suptitle('Diagrama de Cajas y Bigotes para Decision Tree Regression')
         ax = fig.add_subplot(111)
         plt.boxplot(cv_results)
         ax.set_xticklabels('BR')
         plt.show()
+
+    elapsed_time_final = time() - self.start_time_final
+    final = elapsed_time_final - elapsed_time2
+    print(format(final, '.6f'))
 
 class MLPRegressorSA(Algorithm):
   def grafica(self):
@@ -278,7 +283,7 @@ class MLPRegressorSA(Algorithm):
     else:
       plt.show()
 
-    if(pedirParametros == 1):
+    if(self.pedirParametros == 1):
         fig = plt.figure()
         fig.suptitle('Diagrama de Cajas y Bigotes para Decision Tree Regression')
         ax = fig.add_subplot(111)
