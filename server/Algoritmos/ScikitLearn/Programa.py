@@ -33,43 +33,43 @@ from sklearn.cluster import KMeans
 from time import time
 
 
+pedirParametros = int(sys.argv[2])
+
+#Cargamos los datos de un fichero
+file = sys.argv[1]
+fichero = os.path.splitext(file)
+fichero = fichero[0] + ".csv"
+nombreFichero = ""
+
+if file.endswith('.csv'):
+    fileSelected = sf.Csv(file, fichero)
+    df = fileSelected.collect()
+elif file.endswith('.json'):
+    fileSelected= sf.Json(file, fichero)
+    df = fileSelected.collect()
+elif file.endswith('.xlsx'):
+    fileSelected= sf.Xlsx(file, fichero)
+    df = fileSelected.collect()
+else:
+    print("Formato no soportado")
+    sys.exit()
+
+if(pedirParametros == 1):
+    algoritmoSeleccionado = int(input('¿Qué algoritmo quiere ejecutar?: \n\t 1. Clasificación Bayesiana. \n\t 2. Decision Tree Regression. \n\t 3. Mean Shift. \n\t 4. Linear Regresion. \n\t 5. Random Forest. \n\t 6. MLPRegressor. \n\t 7. Comparativa Regresión. \n\t 8. Comparativa Clasificación. \n\t 9. Agglomerative Clustering. \n\t 10. Comparativa Clustering. \n\t 11. DBSCAN. \n\t 12. Clasificador Gausiano.\n  > '))
+    columnaSeleccionadaInicial = int(input('¿Qué columna inicial quiere analizar?\n > '))
+    columnaSeleccionada = int(input('¿Qué columna final quiere analizar?\n > '))
+
+else:
+    algoritmoSeleccionado = int(sys.argv[3])
+    columnaSeleccionadaInicial = int(sys.argv[4])
+    columnaSeleccionada = int(sys.argv[5])
+    nombreFichero = sys.argv[6]
+
+array = df.values
+X = (array[:,columnaSeleccionadaInicial:columnaSeleccionada])
+Y = (array[:,columnaSeleccionada])
+
 print("Hello World")
-
-# pedirParametros = int(sys.argv[2])
-
-# #Cargamos los datos de un fichero
-# file = sys.argv[1]
-# fichero = os.path.splitext(file)
-# fichero = fichero[0] + ".csv"
-# nombreFichero = ""
-
-# if file.endswith('.csv'):
-#     fileSelected = sf.Csv(file, fichero)
-#     df = fileSelected.collect()
-# elif file.endswith('.json'):
-#     fileSelected= sf.Json(file, fichero)
-#     df = fileSelected.collect()
-# elif file.endswith('.xlsx'):
-#     fileSelected= sf.Xlsx(file, fichero)
-#     df = fileSelected.collect()
-# else:
-#     print("Formato no soportado")
-#     sys.exit()
-
-# if(pedirParametros == 1):
-#     algoritmoSeleccionado = int(input('¿Qué algoritmo quiere ejecutar?: \n\t 1. Clasificación Bayesiana. \n\t 2. Decision Tree Regression. \n\t 3. Mean Shift. \n\t 4. Linear Regresion. \n\t 5. Random Forest. \n\t 6. MLPRegressor. \n\t 7. Comparativa Regresión. \n\t 8. Comparativa Clasificación. \n\t 9. Agglomerative Clustering. \n\t 10. Comparativa Clustering. \n\t 11. DBSCAN. \n\t 12. Clasificador Gausiano.\n  > '))
-#     columnaSeleccionadaInicial = int(input('¿Qué columna inicial quiere analizar?\n > '))
-#     columnaSeleccionada = int(input('¿Qué columna final quiere analizar?\n > '))
-
-# else:
-#     algoritmoSeleccionado = int(sys.argv[3])
-#     columnaSeleccionadaInicial = int(sys.argv[4])
-#     columnaSeleccionada = int(sys.argv[5])
-#     nombreFichero = sys.argv[6]
-
-# array = df.values
-# X = (array[:,columnaSeleccionadaInicial:columnaSeleccionada])
-# Y = (array[:,columnaSeleccionada])
 
 # if algoritmoSeleccionado == 1:
 #   graficaFinal = st.BR(X, Y, pedirParametros, nombreFichero)
