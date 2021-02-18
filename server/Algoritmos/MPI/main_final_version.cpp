@@ -190,8 +190,6 @@ int main(int argc, char **argv)
     int rank, size, tag, rc;
     MPI_Status status;
 
-    auto t1 = std::chrono::high_resolution_clock::now();
-
     // Inicializa la estructura de comunicación de MPI entre los procesos.
     rc = MPI_Init(&argc, &argv);
     // Determina el tamaño del grupo asociado con un comunicador
@@ -217,6 +215,8 @@ int main(int argc, char **argv)
             cout << "Los tamaños son incorectos. Altura = " << image[0].size() << " Anchura= " << image[0][0].size() << endl;
             exit(0);
         }
+
+        auto t1 = std::chrono::high_resolution_clock::now();
 
         // Calculamos los valores necesarios para poder aplicar el filtrado
         int newImageHeightNode = userHeight/size;
@@ -264,6 +264,11 @@ int main(int argc, char **argv)
         // Unimos la Imagen del nodo principal
         finalImage = joinImage(finalImage,imageNodo0);
 
+        auto t2 = std::chrono::high_resolution_clock::now();
+
+	    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+	    std::cout << "Tiempo de ejecucion final: " << (float) (duration / 1000.0) << " sec" << std::endl;
+
         // Guardamos la Imagen
 
         // Generamos el nombre del fichero 
@@ -273,11 +278,6 @@ int main(int argc, char **argv)
         string ficheroGuardar = str;
 
         saveImage(finalImage, ficheroGuardar);
-
-        auto t2 = std::chrono::high_resolution_clock::now();
-
-	    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
-	    std::cout << "Tiempo de ejecucion final: " << (float) (duration / 1000.0) << " sec" << std::endl;
     }
     else
     {

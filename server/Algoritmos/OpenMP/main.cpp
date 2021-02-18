@@ -129,9 +129,7 @@ int main(int argc, char **argv)
 {
     int rank, size, tag, rc;
     char message[20];
-
-    auto t1 = std::chrono::high_resolution_clock::now();
-
+    
     // Calculamos los valores del filtro deseado
     Matrix filter = getGaussian(10, 10, 50.0);
 
@@ -143,6 +141,7 @@ int main(int argc, char **argv)
     int width = image[0][0].size();
     int filterHeight = filter.size();
     int filterWidth = filter[0].size();
+
     //Mostramos los valores del filtrado
     cout << endl;
     cout << "--- Información de la Imagen---" << endl;
@@ -159,6 +158,8 @@ int main(int argc, char **argv)
     ss << argv[3];
     string str = ss.str();
     string ficheroGuardar = str;
+
+    auto t1 = std::chrono::high_resolution_clock::now();
 
     Image newImage = applyFilter(image, filter, atoi(argv[2]));
     saveImage(newImage, ficheroGuardar);
