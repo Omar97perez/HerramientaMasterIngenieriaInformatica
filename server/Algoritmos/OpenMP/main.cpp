@@ -162,10 +162,10 @@ int main(int argc, char **argv)
     auto t1 = std::chrono::high_resolution_clock::now();
 
     Image newImage = applyFilter(image, filter, atoi(argv[2]));
-    saveImage(newImage, ficheroGuardar);
-
     auto t2 = std::chrono::high_resolution_clock::now();
 
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
     std::cout << "Tiempo de ejecucion: " << (float) (duration / 1000.0) << " sec" << std::endl;
+
+    saveImage(newImage, ficheroGuardar);
 }
