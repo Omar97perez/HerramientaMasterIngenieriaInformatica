@@ -121,11 +121,15 @@ int main(int agrc, char *argv[])
     cout << "Loading image..." << endl;
     Image image = loadImage(argv[1]);
     cout << "Applying filter..." << endl;
+
     auto t1_1 = std::chrono::high_resolution_clock::now();
+
     Image newImage = applyFilter(image, filter);
+
     auto t2_1 = std::chrono::high_resolution_clock::now();
-    auto duration_1 = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+    auto duration_1 = std::chrono::duration_cast<std::chrono::milliseconds>(t2_1 - t1_1).count();
     std::cout << "Tiempo de cómputo: " << (float) (duration_1 / 1000.0) << " sec" << std::endl;
+    
     cout << "Saving image..." << endl;
 
     // Generamos el nombre del fichero 
