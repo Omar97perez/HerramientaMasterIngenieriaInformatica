@@ -85,7 +85,7 @@ elif algoritmoSeleccionado == 4:
   graficaFinal= st.LinearRegresion(X, Y, pedirParametros, nombreFichero)
   graficaFinal.grafica()
 elif algoritmoSeleccionado == 5:
-  graficaFinal= st.RandomForestRegressorSA(X, Y, pedirParametros, nombreFichero, start_time_final, n_jobs_parrallel)
+  graficaFinal= st.RandomForestRegressorSA(X, Y, pedirParametros, nombreFichero, n_jobs_parrallel)
   elapsed_time_final = graficaFinal.grafica()
 elif algoritmoSeleccionado == 6:
   graficaFinal= st.MLPRegressorSA(X, Y, pedirParametros, nombreFichero)
