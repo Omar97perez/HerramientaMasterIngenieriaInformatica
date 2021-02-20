@@ -250,9 +250,6 @@ class RandomForestRegressorSA(Algorithm):
         ax.set_xticklabels('BR')
         plt.show()
 
-    time_final = time() 
-    return time_final
-
 class MLPRegressorSA(Algorithm):
   def grafica(self):
     validation_size = 0.22
