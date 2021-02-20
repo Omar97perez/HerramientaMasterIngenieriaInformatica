@@ -221,7 +221,7 @@ class RandomForestRegressorSA(Algorithm):
     model = RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=2,max_features='sqrt', max_leaf_nodes=None)
     start_time = time()
     print(n_jobs_parrallel)
-    with parallel_backend('loky', n_jobs= 16):
+    with parallel_backend('loky', n_jobs= 32):
       print("1")
       kfold = model_selection.KFold(n_splits=10, random_state=seed, shuffle=True)
       model.fit(X_train, Y_train)
