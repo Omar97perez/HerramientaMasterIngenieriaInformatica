@@ -57,12 +57,11 @@ def plot_dendrogram(model, **kwargs):
   dendrogram(linkage_matrix, **kwargs)
 
 class Algorithm:
-    def __init__(self, X,Y,pedirParametros, nombreFichero, start_time_final):
+    def __init__(self, X,Y,pedirParametros, nombreFichero):
       self.X = X
       self.Y = Y
       self.pedirParametros = pedirParametros
       self.nombreFichero = nombreFichero
-      self.start_time_final = start_time_final
 
 class BR(Algorithm):
   def grafica(self):
@@ -252,10 +251,8 @@ class RandomForestRegressorSA(Algorithm):
         ax.set_xticklabels('BR')
         plt.show()
 
-    elapsed_time_final = time() - self.start_time_final
-    final = elapsed_time_final
-    print(elapsed_time2)
-    print(format(final, '.6f'))
+    time_final = time() 
+    return time_final
 
 class MLPRegressorSA(Algorithm):
   def grafica(self):
