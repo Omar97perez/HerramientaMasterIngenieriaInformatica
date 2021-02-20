@@ -261,6 +261,8 @@ class MLPRegressorSA(Algorithm):
     X_train, X_validation, Y_train, Y_validation = model_selection.train_test_split(self.X, self.Y, test_size=validation_size, random_state=seed)
     model = MLPRegressor()
     start_time = time()
+    print("Cores:")
+    print(n_jobs_parrallel)
     with parallel_backend('threading', n_jobs=n_jobs_parrallel):
       kfold = model_selection.KFold(n_splits=10, random_state=seed, shuffle=True)
       model.fit(X_train, Y_train)
