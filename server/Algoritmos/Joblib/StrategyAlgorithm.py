@@ -253,7 +253,7 @@ class RandomForestRegressorSA(Algorithm):
 
     elapsed_time_final = time() - self.start_time_final
     final = elapsed_time_final - elapsed_time2
-    print(format(str(elapsed_time), '.6f'))
+    print(format(elapsed_time, '.6f'))
     print(format(final, '.6f'))
 
 class MLPRegressorSA(Algorithm):
