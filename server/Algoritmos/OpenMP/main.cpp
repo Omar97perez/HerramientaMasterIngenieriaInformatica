@@ -173,5 +173,5 @@ int main(int argc, char **argv)
 
     auto t2_1 = std::chrono::high_resolution_clock::now();
     auto duration_1 = std::chrono::duration_cast<std::chrono::milliseconds>(t2_1 - t1_1).count();
-    std::cout << "Tiempo de ejecucion: " << (float) (duration / 1000.0) << " sec" << std::endl;
+    std::cout << "Tiempo de ejecucion: " << (float) (duration_1 / 1000.0) << " sec" << std::endl;
 }
