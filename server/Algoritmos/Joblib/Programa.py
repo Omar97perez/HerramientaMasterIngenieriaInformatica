@@ -121,4 +121,5 @@ else:
 
 
 final = time() - start_time_final
+print("Tiempo Total:")
 print(format(final, '.6f'))

@@ -231,6 +231,10 @@ class RandomForestRegressorSA(Algorithm):
     cv_results = model_selection.cross_val_score(model, X_train, Y_train, cv=kfold)
     msg = 'Random Forest Regressor ' + '(' + str(format(cv_results.mean(),'.4f')) + ') \n' +  salida
 
+    final = time() - start_time_final
+    print("Tiempo ejecución:")
+    print(elapsed_time2)
+
     fig, ax = plt.subplots()
     fig.suptitle( msg)
     ax.scatter(Y_validation, predictions, edgecolors=(0, 0, 0))
