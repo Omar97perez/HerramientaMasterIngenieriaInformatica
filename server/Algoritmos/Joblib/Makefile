@@ -13,4 +13,4 @@ runTomeCanoServerMS:
 all:
 	ls
 run:
-	python3 Programa.py $(file) 0 $(tipoGrafica) $(columnaSeleccionadaInicial) $(columnaSeleccionada) $(fileExit)
+	python3 Programa.py $(file) 0 $(tipoGrafica) $(columnaSeleccionadaInicial) $(columnaSeleccionada) $(fileExit) 1
