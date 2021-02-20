@@ -70,7 +70,7 @@ array = df.values
 X = (array[:,columnaSeleccionadaInicial:columnaSeleccionada])
 Y = (array[:,columnaSeleccionada])
 
-print("Hello World")
+n_jobs_parrallel  = sys.argv[7]
 
 if algoritmoSeleccionado == 1:
   graficaFinal = st.BR(X, Y, pedirParametros, nombreFichero)
@@ -85,7 +85,7 @@ elif algoritmoSeleccionado == 4:
   graficaFinal= st.LinearRegresion(X, Y, pedirParametros, nombreFichero)
   graficaFinal.grafica()
 elif algoritmoSeleccionado == 5:
-  graficaFinal= st.RandomForestRegressorSA(X, Y, pedirParametros, nombreFichero, start_time_final)
+  graficaFinal= st.RandomForestRegressorSA(X, Y, pedirParametros, nombreFichero, start_time_final, n_jobs_parrallel)
   elapsed_time_final = graficaFinal.grafica()
 elif algoritmoSeleccionado == 6:
   graficaFinal= st.MLPRegressorSA(X, Y, pedirParametros, nombreFichero)
