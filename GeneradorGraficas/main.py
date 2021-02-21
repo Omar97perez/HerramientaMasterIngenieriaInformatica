@@ -52,10 +52,8 @@ else:
     print("Formato no soportado")
     sys.exit()
 
-boxplot = df.boxplot(column=['32', '16', '4', '2', '1']
+boxplot = df.boxplot(column=['1', '2', '4', '8', '16', '32']
                     ,showfliers=True, showmeans=True)
-
-sns.pointplot(x='group', y='value', data=df.groupby('group', as_index=False).mean(), ax=ax)
 
 # output file name
 plot_file_name="./Graficos/DockerHub_OpenMP_TC.png"
@@ -64,5 +62,3 @@ plot_file_name="./Graficos/DockerHub_OpenMP_TC.png"
 boxplot.figure.savefig(plot_file_name,
                     format='png',
                     dpi=100)
-
-
