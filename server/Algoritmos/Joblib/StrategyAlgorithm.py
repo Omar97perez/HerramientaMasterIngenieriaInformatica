@@ -227,11 +227,11 @@ class RandomForestRegressorSA(Algorithm):
 
     elapsed_time2 = time() - start_time
     elapsed_time2 = format(elapsed_time2, '.6f')
-    salida = 'Tiempo ejecución:' + str(elapsed_time2) + ' segundos'
+    salida = 'Tiempo ejecucion:' + str(elapsed_time2) + ' segundos'
     cv_results = model_selection.cross_val_score(model, X_train, Y_train, cv=kfold)
     msg = 'Random Forest Regressor ' + '(' + str(format(cv_results.mean(),'.4f')) + ') \n' +  salida
 
-    print("Tiempo ejecución:")
+    print("Tiempo ejecucion:")
     print(elapsed_time2)
 
     fig, ax = plt.subplots()
