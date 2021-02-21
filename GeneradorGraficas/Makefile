@@ -1,2 +1,2 @@
 run:
-	python3 main.py ./Datos/Verode21_MPI_TT.csv Verode21_MPI_TT
+	python3 main.py ./Datos/Quay_OpenMP_TT.csv Quay_OpenMP_TT
