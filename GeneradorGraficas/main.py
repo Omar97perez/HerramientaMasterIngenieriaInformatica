@@ -36,7 +36,7 @@ import seaborn as sns
 #Cargamos los datos de un fichero
 file = sys.argv[1]
 fichero = os.path.splitext(file)
-nombreFichero = fichero[0] 
+nombreFichero = sys.argv[2]
 fichero = fichero[0] + ".csv"
 
 if file.endswith('.csv'):
@@ -55,8 +55,11 @@ else:
 boxplot = df.boxplot(column=['1', '2', '4', '8', '16', '32']
                     ,showfliers=True, showmeans=True)
 
+boxplot.set_xlabel('Cores utilizados')
+boxplot.set_ylabel('Tiempo (segundos)')
+
 # output file name
-plot_file_name="./Graficos/DockerHub_OpenMP_TC.png"
+plot_file_name="./Graficos/" + nombreFichero + ".png"
  
 # # save as jpeg
 boxplot.figure.savefig(plot_file_name,
