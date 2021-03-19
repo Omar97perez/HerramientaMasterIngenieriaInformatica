@@ -1,7 +1,7 @@
 # Herramienta para probar el rendimiento de Kubernetes
 
 ## GraphCloud
-Este repositorio consiste en el desarrollo de una aplicación web basada en la idea de poder ejecutar códigos basados en machine-learning.
+Este repositorio consiste en el desarrollo de una aplicación web basada en la idea de poder ejecutar códigos basados en machine-learning y filtro Gaussiano sobre imágenes. De igual forma, se han creado diversas versiones paralelizando, por una parte, utilizando Joblib Parallel y, por otro lado, usando MPI y OpenMp.
 
 ## MEVN
 Desarrollado mediante el stack de desarrollo MEVN.
