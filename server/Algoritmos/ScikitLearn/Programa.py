@@ -71,54 +71,54 @@ Y = (array[:,columnaSeleccionada])
 
 print("Hello World")
 
-# if algoritmoSeleccionado == 1:
-#   graficaFinal = st.BR(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 2:
-#   graficaFinal= st.DecisionTreeRegression(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 3:
-#   graficaFinal = st.MeanShift1(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 4:
-#   graficaFinal= st.LinearRegresion(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 5:
-#   graficaFinal= st.RandomForestRegressorSA(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 6:
-#   graficaFinal= st.MLPRegressorSA(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 7:
-#   graficaFinal= st.ComparativeRegression(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 8:
-#   iris = datasets.load_iris()
-#   X = iris.data[:, 0:2]  # we only take the first two features for visualization
-#   Y = iris.target
-#   # X = (array[:,columnaSeleccionada-2:columnaSeleccionada])
-#   graficaFinal= st.ComparativeClasification(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 9:
-#   # iris = array
-#   # X = iris.data
-#   graficaFinal= st.AgglomerativeClusteringSA(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 10:
-#   graficaFinal= st.ComparativeClustering(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 11:
-#   # iris = datasets.load_iris()
-#   # X = iris.data[:, 0:2]  # we only take the first two features for visualization
-#   # Y = iris.target
-#   graficaFinal= st.DBSCANSA(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# elif algoritmoSeleccionado == 12:
-#   # iris = datasets.load_iris()
-#   # X = iris.data[:, 0:2]  # we only take the first two features for visualization
-#   # Y = iris.target
-#   # X = (array[:,columnaSeleccionada-2:columnaSeleccionada])
-#   graficaFinal= st.GaussianProcessClassifierSA(X, Y, pedirParametros, nombreFichero)
-#   graficaFinal.grafica()
-# else:
-#     print("El algoritmo introducido no existe")
+if algoritmoSeleccionado == 1:
+  graficaFinal = st.BR(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 2:
+  graficaFinal= st.DecisionTreeRegression(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 3:
+  graficaFinal = st.MeanShift1(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 4:
+  graficaFinal= st.LinearRegresion(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 5:
+  graficaFinal= st.RandomForestRegressorSA(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 6:
+  graficaFinal= st.MLPRegressorSA(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 7:
+  graficaFinal= st.ComparativeRegression(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 8:
+  iris = datasets.load_iris()
+  X = iris.data[:, 0:2]  # we only take the first two features for visualization
+  Y = iris.target
+  # X = (array[:,columnaSeleccionada-2:columnaSeleccionada])
+  graficaFinal= st.ComparativeClasification(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 9:
+  # iris = array
+  # X = iris.data
+  graficaFinal= st.AgglomerativeClusteringSA(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 10:
+  graficaFinal= st.ComparativeClustering(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 11:
+  # iris = datasets.load_iris()
+  # X = iris.data[:, 0:2]  # we only take the first two features for visualization
+  # Y = iris.target
+  graficaFinal= st.DBSCANSA(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+elif algoritmoSeleccionado == 12:
+  # iris = datasets.load_iris()
+  # X = iris.data[:, 0:2]  # we only take the first two features for visualization
+  # Y = iris.target
+  # X = (array[:,columnaSeleccionada-2:columnaSeleccionada])
+  graficaFinal= st.GaussianProcessClassifierSA(X, Y, pedirParametros, nombreFichero)
+  graficaFinal.grafica()
+else:
+    print("El algoritmo introducido no existe")
