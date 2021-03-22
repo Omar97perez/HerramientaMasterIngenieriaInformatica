@@ -72,7 +72,7 @@ class BR(Algorithm):
     model = linear_model.BayesianRidge()
 
     start_time = time()
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):
       kfold = model_selection.KFold(n_splits=10, random_state=seed, shuffle=True)
       model.fit(X_train, Y_train)
       predictions = model.predict(X_validation)
@@ -109,7 +109,7 @@ class DecisionTreeRegression(Algorithm):
     X_train, X_validation, Y_train, Y_validation = model_selection.train_test_split(self.X, self.Y, test_size=validation_size, random_state=seed)
     model = DecisionTreeRegressor()
     start_time = time()
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):
       kfold = model_selection.KFold(n_splits=10, random_state=seed, shuffle=True)
       model.fit(X_train, Y_train)
       predictions = model.predict(X_validation)
@@ -159,7 +159,7 @@ class MeanShift1(Algorithm):
 
     colors = cycle('bgrcmyk')
     start_time = time()
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):    
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):    
       for k, col in zip(range(n_clusters_), colors):
           my_members = labels == k
           cluster_center = cluster_centers[k]
@@ -182,7 +182,7 @@ class LinearRegresion(Algorithm):
     X_train, X_validation, Y_train, Y_validation = model_selection.train_test_split(self.X, self.Y, test_size=validation_size, random_state=seed)
     model = LinearRegression()
     start_time = time()
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):
       kfold = model_selection.KFold(n_splits=10, random_state=seed, shuffle=True)
       model.fit(X_train, Y_train)
       predictions = model.predict(X_validation)
@@ -262,7 +262,7 @@ class MLPRegressorSA(Algorithm):
     start_time = time()
     print("Cores:")
     print(n_jobs_parrallel)
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):
       kfold = model_selection.KFold(n_splits=10, random_state=seed, shuffle=True)
       model.fit(X_train, Y_train)
       predictions = model.predict(X_validation)
@@ -324,7 +324,7 @@ class ComparativeRegression(Algorithm):
     results = []
     names = []
     start_time = time()
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):
       for name, model in models:
           kfold = model_selection.KFold(n_splits=10, random_state=seed, shuffle=True)
           cv_results = model_selection.cross_val_score(model, X_train, Y_train, cv=kfold)
@@ -384,7 +384,7 @@ class ComparativeClasification(Algorithm):
 
 
     start_time = time()
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):
       for index, (name, classifier) in enumerate(classifiers.items()):
           classifier.fit(self.X, self.Y)
 
@@ -423,7 +423,7 @@ class ComparativeClasification(Algorithm):
 class AgglomerativeClusteringSA(Algorithm):
   def grafica(self):
     start_time = time()
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):
       model = AgglomerativeClustering(distance_threshold=0, n_clusters=None)
       model = model.fit(self.X)
     elapsed_time = time() - start_time
@@ -455,7 +455,7 @@ class ComparativeClustering(Algorithm):
 
     colors = cycle('bgrcmyk')
     start_time = time()
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):
       for k, col in zip(range(n_clusters_), colors):
           my_members = labels == k
           cluster_center = cluster_centers[k]
@@ -548,7 +548,7 @@ class GaussianProcessClassifierSA(Algorithm):
     Xfull = np.c_[xx.ravel(), yy.ravel()]
 
     start_time = time()
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):
       for index, (name, classifier) in enumerate(classifiers.items()):
           classifier.fit(self.X, self.Y)
 
@@ -615,7 +615,7 @@ class DBSCANSA(Algorithm):
     colors = [plt.cm.Spectral(each)
               for each in np.linspace(0, 1, len(unique_labels))]
     start_time = time()
-    with parallel_backend('threading', n_jobs=n_jobs_parrallel):
+    with parallel_backend('threading', n_jobs=self.n_jobs_parrallel):
       for k, col in zip(unique_labels, colors):
           if k == -1:
               # Black used for noise.
