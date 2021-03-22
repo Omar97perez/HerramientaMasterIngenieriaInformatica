@@ -1,5 +1,3 @@
-#-*- coding: utf-8-*-
-
 import matplotlib.pyplot as plt
 import pandas as pd
 import StrategyFile as sf
@@ -31,6 +29,7 @@ from sklearn.datasets import load_iris
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.cluster import KMeans
 from time import time
+
 
 
 pedirParametros = int(sys.argv[2])
@@ -68,8 +67,6 @@ else:
 array = df.values
 X = (array[:,columnaSeleccionadaInicial:columnaSeleccionada])
 Y = (array[:,columnaSeleccionada])
-
-print("Hello World")
 
 if algoritmoSeleccionado == 1:
   graficaFinal = st.BR(X, Y, pedirParametros, nombreFichero)
